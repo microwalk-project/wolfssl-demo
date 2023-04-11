@@ -6,6 +6,12 @@ thisDir=$(pwd)
 repoRootDir=$(realpath $thisDir/..)
 resultsDir=$thisDir/results
 
+echo "Running analysis script with the following variables:"
+echo "  Working directory: $WORK_DIR"
+echo "  This directory: $thisDir"
+echo "  Repository root: $repoRootDir"
+echo "  Results directory: $resultsDir"
+
 mkdir -p $resultsDir
 
 reports=""
