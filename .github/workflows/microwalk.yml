@@ -30,7 +30,8 @@ jobs:
         uses: microwalk-project/microwalk-pin-action@v1
         with:
           script-directory: ${{ env.script_directory }}
-          dwarf-path-prefix: ${{ env.dwarf_path_prefix }}
+          # Include both runner AND action workspace paths
+          dwarf-path-prefix: ${{ env.dwarf_path_prefix }}:${{ github.workspace }}
       
       - name: Upload analysis result
         uses: github/codeql-action/upload-sarif@v2
