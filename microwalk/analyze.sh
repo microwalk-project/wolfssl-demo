@@ -10,6 +10,8 @@ resultsDir=$thisDir/results
 
 if [ -z "$dwarfPathPrefix" ]; then
   dwarfPathPrefix=$repoRootDir
+else
+  dwarfPathPrefix="$dwarfPathPrefix:$repoRootDir"
 fi
 
 echo "Running analysis script with the following variables:"
