@@ -8,10 +8,13 @@ on:
 
 env:
   script_directory: microwalk
+  # We need to do this here in order to catch the runner's repo path
+  # See https://github.com/actions/runner/issues/728
+  dwarf_path_prefix: ${{ github.workspace }}
 
 jobs:
   build-analyze:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
 
@@ -27,6 +30,7 @@ jobs:
         uses: microwalk-project/microwalk-pin-action@v1
         with:
           script-directory: ${{ env.script_directory }}
+          dwarf-path-prefix: ${{ env.dwarf_path_prefix }}
       
       - name: Upload analysis result
         uses: github/codeql-action/upload-sarif@v2
